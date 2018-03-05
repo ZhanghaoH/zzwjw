@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <base href="../assets/">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>机动车违法查询</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="css/amazeui.min.css">
+    <!-- <link rel="stylesheet" href="css/app.css"> -->
+    <link rel="stylesheet" href="css/check.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/amazeui.min.js"></script>
+    <script src="js/urlHead.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?095edfec21fc74ce77584243f9070933";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+        
+    <style>
+        .checkbox-wrap {
+            display: flex;
+            align-items: center;
+            margin-left: -22px;
+            width: 200px;
+        }
+
+        .checkbox-tag {
+            width: 15px;
+            height: 15px;
+            border: 1px solid #e5e5e5;
+            /* border-radius: 6px; */
+            background-color: #fff;
+            margin-right: 5px;
+            box-sizing: border-box;
+        }
+
+        .checkbox-tag.active {
+            border: 3px solid #fff;
+            background-color: var(--active-color);
+        }
+    </style>
+</head>
+
+<body>
+    <script src="js/browser.js"></script>
+    <div class="am-g">
+        <form>
+            <div class="form-cells">
+                <div class="form-cell">
+                    <div class="form-radio am-round form-radio-active" data-type="02" id="car">
+                        <img src="./i/radio_car_active.png" alt="car" class="radio-img">小车
+                    </div>
+                    <div class="form-radio am-round " data-type="01" id="truck">
+                        <img src="./i/radio_truck.png" alt="truck" class="radio-img">大车
+                    </div>
+                    <div class="form-radio am-round " data-type="52" id="ev">
+                        <img src="./i/radio_ev.png" alt="ev" class="radio-img">新能源
+                    </div>
+                </div>
+                <div class="form-cell">
+                    <div class="form-cell__hd">
+                        <select name="fzjg" class="form-select" style="border: none" id="fzjg">
+                            <option selected value="豫A">豫A</option>
+                            <option value="豫B">豫B</option>
+                            <option value="豫C">豫C</option>
+                            <option value="豫D">豫D</option>
+                            <option value="豫E">豫E</option>
+                            <option value="豫F">豫F</option>
+                            <option value="豫G">豫G</option>
+                            <option value="豫H">豫H</option>
+                            <option value="豫J">豫J</option>
+                            <option value="豫K">豫K</option>
+                            <option value="豫L">豫L</option>
+                            <option value="豫M">豫M</option>
+                            <option value="豫N">豫N</option>
+                            <option value="豫P">豫P</option>
+                            <option value="豫Q">豫Q</option>
+                            <option value="豫R">豫R</option>
+                            <option value="豫S">豫S</option>
+                            <option value="豫U">豫U</option>
+                        </select>
+                        <span class="am-form-caret"></span>
+                    </div>
+                    <div class="form-cell__bd">
+                        <input type="text" placeholder="请输入车牌号" class="form-input" name="carNo">
+                    </div>
+                </div>
+                <div class="form-cell">
+                    <div class="form-cell__bd">
+                        <input type="text" name="clsbdh" class="form-input" placeholder="请输入车辆识别码后六位">
+                    </div>
+                </div>
+            </div>
+            <div class="am-checkbox">
+                <div class="checkbox-wrap">
+                    <div class="checkbox-tag"></div>记住我的车辆信息
+                </div>
+            </div>
+            <div class="form-tips">
+                <a href="javascript:" data-am-modal="{target: '#my-alert'}">车辆识别码在哪？</a>
+            </div>
+            <div class="btns-group">
+                <button type="button" class="am-btn am-round am-btn-primary am-btn-block" onclick="check()">查询</button>
+            </div>
+        </form>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog am-round">
+            <div class="am-modal-bd">
+                <img src="./i/xsz.gif" alt="驾驶证" style="width: 100%">
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="res-wfcx">
+        <div class="am-modal-dialog am-round">
+            <div class="am-modal-hd">提示</div>
+            <div class="am-modal-bd">
+                <span id="status">结果返回中</span>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        'use strict';
+
+        var radios = $('.form-radio');
+        var radioImgs = $('.radio-img');
+        var type = "02";
+        var isSave = false;
+        if (window.localStorage.getItem('carInfo')) {
+            var carInfo = window.localStorage.getItem('carInfo');
+            isSave = true;
+            checkboxChange(isSave);
+            var info = JSON.parse(carInfo);
+            $("input[name='carNo']").val(info.HPHM);
+            $("input[name='clsbdh']").val(info.CLSBDH);
+            $("select[name='fzjg']").val(info.FZJG);
+            type = info.HPZL;
+            radioChange(type);
+        }
+        checkboxChange(isSave);
+        // 单选框
+        $('.checkbox-wrap').on('touchstart', function () {
+            isSave = !isSave;
+            checkboxChange(isSave);
+        });
+
+        function radioChange(type) {
+            radios.removeClass('form-radio-active');
+            $('#car img').attr('src', './i/radio_car.png');
+            $('#truck img').attr('src', './i/radio_truck.png');
+            $('#ev img').attr('src', './i/radio_ev.png');
+            // for (let i = 0, len = radioImgs.length; i < len; ++i) {
+            //     radioImgs[i].setAttribute('src', radioImgs[i].getAttribute('src').replace(/_active/,
+            //         ''))
+            // }
+            switch (type) {
+                case '02':
+                    $('#car').addClass('form-radio-active');
+                    $('#car img').attr('src', './i/radio_car_active.png');
+                    break;
+                case '01':
+                    $('#truck').addClass('form-radio-active');
+                    $('#truck img').attr('src', './i/radio_truck_active.png');
+                    break;
+                case '52':
+                    $('#ev').addClass('form-radio-active');
+                    $('#ev img').attr('src', './i/radio_ev_active.png');
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function checkboxChange(issave) {
+            if (issave) {
+                $('.checkbox-tag').addClass('active');
+            } else {
+                $('.checkbox-tag').removeClass('active');
+                window.localStorage.removeItem('carInfo');
+            }
+        }
+        radios.on('touchstart click', function (e) {
+            radios.removeClass('form-radio-active');
+            $(this).addClass('form-radio-active');
+            var imgActive = $(this).find('img');
+            if (e.target.dataset.type != type) {
+                type = $(this)[0].dataset.type;
+                radioChange(type);
+                // for (let i = 0, len = radioImgs.length; i < len; ++i) {
+                //     radioImgs[i].setAttribute('src', radioImgs[i].getAttribute('src').replace(/_active/,
+                //         ''))
+                // }
+                // imgActive.attr('src', imgActive.attr('src').replace(/.png/, '_active.png'))
+            }
+        });
+
+        function check() {
+            window.localStorage.removeItem('res');
+            // info = {
+            //     "HPHM": "G4012",
+            //     "HPZL": "02",
+            //     "CLSBDH": "3209110",
+            //     "FZJG": "豫A"
+            // }
+            // auth = {
+            //     "time_stamp": "20171009173000"
+            // }
+            var HPHM = $("input[name='carNo']").val().toUpperCase().replace(/\s/g, "");
+            var CLSBDH = $("input[name='clsbdh']").val().toUpperCase().replace(/\s/g, "");
+            var FZJG = $("select[name='fzjg']").val().toUpperCase().replace(/\s/g, "");
+            console.log(FZJG);
+            var HPZL = type;
+            if (CLSBDH.length < 6 ) {
+                $('#status').text('请正确输入车辆识别代号！');
+                $('#res-wfcx').modal('open');
+            } else if ( (HPHM.length != 5 && type != "52") || (HPHM.length != 6 && type == "52") ) {
+                $('#status').text('请正确输入车牌号！');
+                $('#res-wfcx').modal('open'); 
+            } else {
+                console.log('5');
+                var _info = {
+                    "HPHM": HPHM,
+                    "HPZL": HPZL,
+                    "CLSBDH": CLSBDH,
+                    "FZJG": FZJG
+                };
+                var auth = {
+                    "time_stamp": new Date().Format()
+                };
+                if (isSave) {
+                    // let carInfo = Object.assign(info, {'isSave': isSave})
+                    window.localStorage.setItem('carInfo', JSON.stringify(_info));
+                } else {
+                    window.localStorage.removeItem('carInfo');
+                }
+                $.ajax({
+                    type: "POST",
+                    url: URLHEAD + WFCX,
+                    data: {
+                        info: JSON.stringify(_info),
+                        auth: JSON.stringify(auth)
+                    },
+                    contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                    success: function success(res) {
+                        // let res = {
+                        //     "msg": null,
+                        //     "resultData": [{
+                        //             "wfsj": "2017-10-07 09:55:00.0",
+                        //             "wfxwdm": "1039",
+                        //             "wfbh": null,
+                        //             "wfdz": "东明路（纬二路至政四街）",
+                        //             "wfjfs": 0,
+                        //             "pageNo": 0,
+                        //             "wfxw": "不按规定停车",
+                        //             "hpzl": "02",
+                        //             "hphm": "豫AG4012",
+                        //             "fkje": 200,
+                        //             "clbj": "未处理"
+                        //         },
+                        //         {
+                        //             "wfsj": "2017-07-11 20:41:00.0",
+                        //             "wfxwdm": "1625",
+                        //             "wfbh": null,
+                        //             "wfdz": "人民路汉城路口",
+                        //             "wfjfs": 6,
+                        //             "pageNo": 0,
+                        //             "wfxw": "驾驶机动车违反道路交通信号灯通行",
+                        //             "hpzl": "02",
+                        //             "hphm": "豫AG4012",
+                        //             "fkje": 200,
+                        //             "clbj": "未处理"
+                        //         }
+                        //     ],
+                        //     "errCode": 0
+                        // }
+                        res = JSON.parse(res);
+                        var errCode = res.errCode;
+                        switch (errCode) {
+                            case 0:
+                                window.localStorage.setItem('res', JSON.stringify(res.resultData));
+                                window.location.assign('../pages/res_wfcx.html');
+                                break;
+                            case '1':
+                            case '2':
+                            case '10':
+                                $('#status').text(res.msg);
+                                $('#res-wfcx').modal('open');
+                                break;
+                            case '12':
+                                $('#status').text('服务器睡着了，多试几次叫醒它...');
+                                $('#res-wfcx').modal('open');
+                                break;
+                        }
+                    },
+                    error: function error(err) {
+                        $('#status').text('服务器繁忙...');
+                        $('#res-wfcx').modal('open');
+                    },
+                    complete: function complete(XMLHttpRequest, status) {
+                        //请求完成后最终执行参数
+                        if (status == 'timeout') {
+                            //超时,status还有success,error等值的情况
+                            $('#status').text('请求超时...');
+                            $('#res-wfcx').modal('open');
+                        }
+                    }
+                });
+            }
+        }
+        window.check = check;
+    })
+</script>
+
+</html>

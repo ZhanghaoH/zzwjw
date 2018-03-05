@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ZZMicroService出入境业务指南</name>
+	<name>ZZM</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -14,4 +14,15 @@
 	<natures>
 		<nature>com.aptana.projects.webnature</nature>
 	</natures>
+	<filteredResources>
+		<filter>
+			<id>1517817430251</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-node_modules</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
 </projectDescription>

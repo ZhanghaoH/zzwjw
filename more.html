@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <base href="./assets/">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>郑州警民通</title>
+
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.css">
+  <link rel="stylesheet" href="css/owl.theme.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/more.css">
+  <script src="js/jquery.min.js"></script>
+  <!-- <script src="js/amazeui.min.js"></script> -->
+  <script src="js/owl.carousel.js"></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?095edfec21fc74ce77584243f9070933";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</head>
+
+<body>
+  <script src="js/browser.js"></script>
+  <!--[if lte IE 9]>
+    <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+      href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+      以获得更好的体验！</p>
+    <![endif]-->
+  <!-- home key -->
+  <a href="../index.html">
+    <img src="i/home.png" alt="home" class="home">
+  </a>
+  <!-- <a href="../index.html" class="home home-txt">首页</a> -->
+  <!-- 首页 -->
+  <div class="pages am-g am-g-fixed index">
+    <!-- 轮播图 -->
+    <div class="focus-pic">
+      <div id="focus-img" class="owl-carousel">
+        <div class="item">
+          <img src="i/more_banner_1.jpg">
+        </div>
+        <div class="item">
+          <img src="i/more_banner_2.jpg">
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        var aspectRatio = 16 / 9;
+        var focusPic = $('.focus-pic');
+        var w = focusPic.width() + 'px'
+        var h = focusPic.width() / aspectRatio + 'px'
+        focusPic.css('height', focusPic.width() / aspectRatio + 'px');
+        focusPic.find('.item img').each(function () {
+          if ($(this).width() / $(this).height() > aspectRatio) {
+            $(this).css('width', w)
+            $(this).css('height', h)
+          } else {
+            $(this).css('width', w)
+            $(this).css('height', h)
+          }
+        })
+        $(window).on('resize', function () {
+          var aspectRatio = 16 / 9;
+          var focusPic = $('.focus-pic');
+          var w = focusPic.width() + 'px'
+          var h = focusPic.width() / aspectRatio + 'px'
+          focusPic.css('height', focusPic.width() / aspectRatio + 'px');
+          focusPic.find('.item img').each(function () {
+            if ($(this).width() / $(this).height() > aspectRatio) {
+              $(this).css('width', w)
+              $(this).css('height', h)
+            } else {
+              $(this).css('width', w)
+              $(this).css('height', h)
+            }
+          })
+        })
+        $("#focus-img").owlCarousel({
+          autoPlay: 3000,
+          navigation: false,
+          slideSpeed: 300,
+          paginationSpeed: 400,
+          stopOnHover: true,
+          rewindSpeed: 10,
+          singleItem: true,
+          pagination: false,
+        });
+      })
+    </script>
+    <!-- 九宫格菜单 -->
+    <div class="menu-tit">热点查询</div>
+    <ul class="am-avg-sm-2 grid">
+      <li>
+        <a href="../pages/wfcx.html">
+          <i class="icon-menu-wfcx"></i>
+          <div class="label">机动车违法查询</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/crjzj.html">
+          <i class="icon-menu-crjzj"></i>
+          <div class="label">出入境证件查询</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/jsz.html">
+          <i class="icon-menu-jsz"></i>
+          <div class="label">驾驶证记分查询</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/sfz.html">
+          <i class="icon-menu-sfz"></i>
+          <div class="label">身份证办理进度查询</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/jzz.html">
+          <i class="icon-menu-jzz"></i>
+          <div class="label">居住证办理进度查询</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/crjbl.html">
+          <i class="icon-menu-crjbl"></i>
+          <div class="label">出入境办理进度查询</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/cmcx.html">
+          <i class="icon-menu-cmcx"></i>
+          <div class="label">同名查询</div>
+        </a>
+      </li>
+      <li>
+        <a href="http://www.jtgzfw.com/jtgzfw/_pc/wx/jgcs_list.do?type_id=JC04">
+          <i class="icon-menu-cjfb"></i>
+          <div class="label">车检分布点查询</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/baycj.html">
+          <i class="icon-menu-baycj"></i>
+          <div class="label">保安员考试成绩查询</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/bayzjd.html">
+          <i class="icon-menu-bayzjd"></i>
+          <div class="label">保安员证进度查询</div>
+        </a>
+      </li>
+    </ul>
+    <div class="menu-tit">民警听民声</div>
+    <ul class="am-avg-sm-2 grid">
+      <li>
+        <a href="../party.html?page=jjjw">
+          <i class="icon-menu-jjjw"></i>
+          <div class="label">警界隽文</div>
+        </a>
+      </li>
+      <li>
+        <a href="../party.html?page=jjyw">
+          <i class="icon-menu-jjyw"></i>
+          <div class="label">警界要闻</div>
+        </a>
+      </li>
+      <!-- <li>
+        <a href="../party.html?page=ymjgs">
+          <i class="icon-menu-ymjgs"></i>
+          <div class="label">英模讲故事</div>
+        </a>
+      </li> -->
+      <li>
+        <a href="../party.html?page=ynjjy">
+          <i class="icon-menu-ynjjy"></i>
+          <div class="label">邀您进警营</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://service.d6db.com/GAJ.do">
+          <i class="icon-menu-tmswdc"></i>
+          <div class="label">警民心声</div>
+        </a>
+      </li>
+    </ul>
+    <div class="menu-tit">警民互动</div>
+    <ul class="am-avg-sm-2 grid">
+      <!-- <li>
+        <a href="http://zzga.zhengzhou.gov.cn/wslist/index.jhtml">
+          <i class="icon-menu-zxjb"></i>
+          <div class="label">在线举报</div>
+        </a>
+      </li> -->
+      <li>
+        <a href="http://zzga.zhengzhou.gov.cn/maillist/index.jhtml">
+          <i class="icon-menu-jzxx"></i>
+          <div class="label">局长信箱</div>
+        </a>
+      </li>
+      <li>
+        <a href="http://zzga.zhengzhou.gov.cn/xflist/index.jhtml">
+          <i class="icon-menu-wsxf"></i>
+          <div class="label">网上信访</div>
+        </a>
+      </li>
+      <li>
+        <a href="http://zzga.zhengzhou.gov.cn/tslist/index.jhtml">
+          <i class="icon-menu-jdts"></i>
+          <div class="label">监督投诉</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx17f3e81b23e73291&redirect_uri=http://app1.henanga.gov.cn/zzga-wx-server/oauth&response_type=code&scope=snsapi_userinfo&state=ssp#wechat_redirect">
+          <i class="icon-menu-jtssp"></i>
+          <div class="label">交通有奖随手拍</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx17f3e81b23e73291&redirect_uri=http://app1.henanga.gov.cn/zzga-wx-server/oauth&response_type=code&scope=snsapi_userinfo&state=wxbj#wechat_redirect">
+          <i class="icon-menu-wxbj"></i>
+          <div class="label">微信报警</div>
+        </a>
+      </li>
+    </ul>
+    <div class="menu-tit">申报预约</div>
+    <ul class="am-avg-sm-2 grid">
+      <li>
+        <a href="http://zzga.ueit.com.cn/index.php?g=Wap&m=Booking&a=index&token=anxtyr1465784623">
+          <i class="icon-menu-hzywyy"></i>
+          <div class="label">户政预约</div>
+        </a>
+      </li>
+      <li>
+        <a href="http://zzga.ueit.com.cn/index.php?g=Wap&m=Booking&a=churujing&token=anxtyr1465784623">
+          <i class="icon-menu-crjyy"></i>
+          <div class="label">出入境预约</div>
+        </a>
+      </li>
+      <li>
+        <a href="http://zzga.ueit.com.cn/index.php?g=Wap&m=IndexN&a=index&token=anxtyr1465784623">
+          <i class="icon-menu-wph"></i>
+          <div class="label">微排号</div>
+        </a>
+      </li>
+      <li>
+      <!-- <a href="http://zzga.ueit.com.cn/index.php?g=Wap&m=Index&a=ldrkwx&token=anxtyr1465784623"> -->
+        <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx17f3e81b23e73291&redirect_uri=http://app1.henanga.gov.cn/zzga-wx-server/oauth&response_type=code&scope=snsapi_userinfo&state=jzz#wechat_redirect">
+          <i class="icon-menu-jzzsbdj"></i>
+          <div class="label">申报暂住登记</div>
+        </a>
+      </li>
+    </ul>
+    <div class="menu-tit">其他业务</div>
+    <ul class="am-avg-sm-2 grid">
+      <li>
+        <a href="../pages/ywzn.html">
+          <i class="icon-menu-hzywzn"></i>
+          <div class="label">户证业务指南</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/crjywzn.html">
+          <i class="icon-menu-crjywzn"></i>
+          <div class="label">出入境业务指南</div>
+        </a>
+      </li>
+      <li>
+        <a href="http://jgkckp.henanga.gov.cn/hnwxkckp_webmap/hnwxkckp_hyym">
+          <i class="icon-menu-kckp"></i>
+          <div class="label">快处快赔</div>
+        </a>
+      </li>
+      <li>
+        <a href="http://app1.henanga.gov.cn/jmt/appworld/auto.html">
+          <i class="icon-menu-app"></i>
+          <div class="label">河南警民通下载</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/micro_trix.html">
+          <i class="icon-menu-trix"></i>
+          <div class="label">郑州微矩阵</div>
+        </a>
+      </li>
+      <li>
+        <a href="../pages/detail_tel.html">
+          <i class="icon-menu-tel"></i>
+          <div class="label">便民服务热线</div>
+        </a>
+      </li>
+      <li>
+        <a href="http://minedata.cn/application/xpx/zzga/">
+          <i class="icon-menu-traffic"></i>
+          <div class="label">路况地图</div>
+        </a>
+      </li>
+      <li>
+        <a href="http://minedata.cn/application/xpx/zzga/">
+          <i class="icon-menu-traffic"></i>
+          <div class="label">路况地图</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx17f3e81b23e73291&redirect_uri=http://app1.henanga.gov.cn/zzga-wx-server/oauth&response_type=code&scope=snsapi_userinfo&state=shce#wechat_redirect">
+          <i class="icon-menu-shce"></i>
+          <div class="label">扫黑除恶有奖举报</div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>

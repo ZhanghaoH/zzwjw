@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <base href="../assets/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="renderer" content="webkit">
+  <title>保安员成绩信息</title>
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/result.css">
+  <script src="js/jquery.min.js"></script>
+  <script>
+    $(function () {
+      // const broswer = _BROSWER.detect()
+      // if (broswer.broswer != "WeiXin") {
+      //   window.location.assign('../error.html')
+      // }
+    })
+  </script>
+  <style>
+    table {
+      font-size: 14px;
+      width: 100%;
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th,
+    td {
+      padding: 15px 0;
+      text-align: center;
+      border-left: 1px solid var(--border-color);
+      border-top: 1px solid var(--border-color);
+    }
+  </style>
+</head>
+
+<body>
+  <script src="js/browser.js"></script>
+  <ul class="am-list res-list">
+    <li>
+      <div class="item" style="border-bottom:none">
+        <span class="item-lable">姓&emsp;&emsp;名：</span>
+        <span class="item-cnt" id="name">{{itemName.fssj}}</span>
+      </div>
+      <div class="item" style="border-bottom:none">
+        <span class="item-lable">身份证号：</span>
+        <span class="item-cnt" id="idNo">{{itemName.sfzh}}</span>
+      </div>
+      <div class="item" id="grades" style="margin: 10px 15px;">
+        <table>
+          <tr>
+            <th>考试科目</th>
+            <th>考试成绩</th>
+          </tr>
+          <tr>
+            <td>保安员资格考试理论知识</td>
+            <td>80</td>
+          </tr>
+          <tr>
+            <td>保安员资格考试理论知识</td>
+            <td>80</td>
+          </tr>
+        </table>
+      </div>
+    </li>
+  </ul>
+</body>
+<script>
+  $(function ($) {
+    'use strict';
+
+    var res = window.localStorage.getItem('res');
+    var resData = JSON.parse(res);
+    var res_html =
+      '<table>\n          <tr>\n            <th>\u8003\u8BD5\u79D1\u76EE</th>\n            <th>\u8003\u8BD5\u6210\u7EE9</th>\n          </tr>';
+    if (resData.length > 0) {
+      $('#idNo').text(resData[0].sfzh);
+      $('#name').text(resData[0].xm);
+      resData.map(function (el, index) {
+        res_html += '<tr>\n            <td>' + el.kskmmc + '</td>\n            <td>' + el.kscj +
+          '</td>\n          </tr>';
+      });
+      res_html += '</table>';
+      $('#grades').html(res_html);
+    }
+    // console.log(Object.prototype.toString.call(resData));
+    // console.log(resData.constructor);
+  })
+</script>
+
+</html>

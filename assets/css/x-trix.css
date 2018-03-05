@@ -1,0 +1,35 @@
+::-webkit-scrollbar {height:0;width:0}
+header {height: 2.6rem;background: url(../i/head_bg.png) no-repeat center center ;background-size: 100% 100%;position: relative;}
+.trix-hd-cnt{color:#fff;position:absolute;left:.6rem;top: .8rem }
+.trix-hd-cnt1{font-size:.4rem}
+.trix-hd-cnt2{margin:0 0 5px 0;font-size:.28rem}
+.trix-observe{padding:0 10px;color:#fff;border:1px solid #fff;font-size:.28rem;border-radius: 4px;}
+.tabBox {margin: 0 .3rem;}
+.hdl {font-size: 0}
+.hdl li {display: inline-block;width: 33%;text-align: center;font-size: .28rem;padding: .3rem 0;border-bottom:2px solid #d6d6d6;}
+.hdl li.on {border-color: #3996d4;}
+.trix-img-wrap::before{display:inline-block;width:0;height:100%;content:"";vertical-align:middle}
+.trix-img-wrap{width:100%;height:.68rem;margin:0 0 .16rem 0}
+.trix-img-wrap img{height:.6rem;vertical-align:middle}
+.trix-name {font-size:.28rem}
+.trix-cnt-wrap {padding:0;/* margin:0 .3rem; */overflow-y:auto;}
+.trix-cnt li{padding: 8px 10px;border-bottom:1px solid #d6d6d6;font-size: 14px;}
+.trix-cnt li a{display:block;color:#333}
+.trix-top-cnt li>div{display:inline-block;vertical-align:middle;}
+.trix-top-cnt li{padding:.2rem 0;border-bottom:1px solid #d6d6d6}
+.trix-top-thumb{overflow:hidden;margin:0 5%;width:.9rem;height:.9rem;border-radius:50%;background-color:#b7b8b8}
+.trix-top-thumb img{width:100%;height:100%}
+.trix-top-desc{margin:0 2% 0 0;width:48%}
+.trix-top-desc strong{font-size:.32rem}
+.trix-top-desc p{color:#858585;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:.24rem; text-overflow: ellipsis;}
+.trix-top-subscribe{width:20%;text-align:center}
+.btn-top-subscribe{padding:0 .15rem;border:2px solid #3996d4;border-radius:6px;color:#3996d4;font-size:.28rem}
+li.menu-wr { padding: 0;border-bottom:1px solid #d6d6d6;}
+.menu-tit { padding: 8px 10px;display: flex; justify-content: space-between;}
+.icon-right { width: 25px;background: url("../i/right.png") no-repeat center center;background-size: contain;transform-origin: center center;transition: all .5s;-webkit-transition: all .5s;}
+.icon-right.ani-open { transform: rotate(90deg);-webkit-transform: rotate(90deg)}
+.icon-right.ani-close { transform: rotate(0deg);-webkit-transform: rotate(0deg)}
+.menu-list {margin-left: 15px;transition: all .5s;-webkit-transition: all .5s;}
+.menu-list>li:last-child { border-bottom: none;}
+.hide { display: none;}
+

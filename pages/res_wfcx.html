@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <base href="../assets/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="renderer" content="webkit">
+  <title>车辆违法信息</title>
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/result.css">
+  <script src="js/jquery.min.js"></script>
+  <script>
+    $(function () {
+      // const broswer = _BROSWER.detect()
+      // if (broswer.broswer != "WeiXin") {
+      //   window.location.assign('../error.html')
+      // }
+    })
+  </script>
+</head>
+
+<body>
+  <script src="js/browser.js"></script>
+  <ul class="am-list res-list" id="resUl">
+    <li>
+      <div class="item">
+        <span class="item-lable">车牌号码：</span>
+        <span class="item-cnt">{{itemName.bllx}}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">违法时间：</span>
+        <span class="item-cnt">{{itemName.bllx}}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">违法地点：</span>
+        <span class="item-cnt">{{itemName.sfzh}}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">违法行为：</span>
+        <span class="item-cnt">{{itemName.blzt}}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">违法代码：</span>
+        <span class="item-cnt">{{itemName.blzt}}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">处罚结果：</span>
+        <span class="item-cnt">扣
+          <span class="danger">2</span>分&emsp;罚
+          <span class="danger">200</span>元</span>
+      </div>
+    </li>
+  </ul>
+</body>
+<script>
+  $(function ($) {
+    //                                 "wfsj": "2017-10-07 09:55:00.0",
+    //                                 "wfxwdm": "1039",
+    //                                 "wfbh": null,
+    //                                 "wfdz": "东明路（纬二路至政四街）",
+    //                                 "wfjfs": 0,
+    //                                 "pageNo": 0,
+    //                                 "wfxw": "不按规定停车",
+    //                                 "hpzl": "02",
+    //                                 "hphm": "豫AG4012",
+    //                                 "fkje": 200,
+    //                                 "clbj": "未处理"
+    'use strict';
+
+    var res = window.localStorage.getItem('res');
+    var resData = JSON.parse(res);
+    var res_html = '';
+    if (resData.length > 0) {
+      resData.map(function (el, index) {
+        res_html +=
+          ' <li>\n          <div class="item">\n            <span class="item-lable">\u8F66\u724C\u53F7\u7801\uFF1A</span><span class="item-cnt">' +
+          el.hphm +
+          '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u8FDD\u6CD5\u65F6\u95F4\uFF1A</span><span class="item-cnt">' +
+          el.wfsj +
+          '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u8FDD\u6CD5\u5730\u70B9\uFF1A</span><span class="item-cnt">' +
+          el.wfdz +
+          '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u8FDD\u6CD5\u884C\u4E3A\uFF1A</span><span class="item-cnt">' +
+          el.wfxw +
+          '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u8FDD\u6CD5\u4EE3\u7801\uFF1A</span><span class="item-cnt">' +
+          el.wfxwdm +
+          '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u5904\u7F5A\u7ED3\u679C\uFF1A</span><span class="item-cnt">\u6263<span class="danger">' +
+          el.wfjfs + '</span>\u5206&emsp;\u7F5A<span class="danger">' + el.fkje +
+          '</span>\u5143</span>\n          </div>\n        </li>';
+      });
+      $('#resUl').html(res_html);
+    }
+    // console.log(Object.prototype.toString.call(resData));
+    // console.log(resData.constructor);
+  })
+</script>
+
+</html>

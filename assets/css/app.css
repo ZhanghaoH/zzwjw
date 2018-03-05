@@ -1,0 +1,184 @@
+@charset "UTF-8";
+:root {
+  --main-color: #999;
+  --active-color: #1386e3;
+  --bg-color: #f8f8f8;
+}
+html, body {
+  background-color: var(--bg-color);
+  background-color: #f8f8f8;
+  color: #666;
+  -webkit-font-smoothing: antialiased;
+}
+/* 超出文字截断 */
+.line-clamp {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+.flex-row {
+  display: flex!important;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+/* HOME key css */
+.home {
+  position: fixed;
+  right: 1.5rem;
+  top: 1.5rem;
+  display: inline-block;
+  width: 5.5rem;
+  z-index: 99999;
+}
+.home-txt {
+  line-height: 1.8;
+  background-color: var(--active-color);
+  background-color: #f8f8f8;
+  color: #fff;
+  border-radius: 1000px;
+}
+.grid {
+  background-color: #fff;
+}
+/* bottom-tabs  */
+.am-navbar-default .am-navbar-nav {
+  background-color: #fff;
+  border-top: 1px solid #dedede; 
+  display: flex;
+}
+.am-navbar .am-navbar-nav li {
+  flex: 1
+}
+.am-navbar-default a {
+	color: #999;
+  color: var(--main-color);
+}
+.am-navbar-default a.am-navbar-active {
+  color: #1386e3;
+  color: var(--active-color);
+}
+/* css for carousel images */
+.focus-img {
+  width: 100%;
+  height: 100%;
+}
+
+.focus-img .owl-wrapper-outer {
+  width: 100%;
+  height: 100%;
+}
+
+.focus-img .owl-wrapper-outer div {
+  width: 100%;
+  height: 100%;
+}
+
+.focus-img .owl-controls {
+  position: absolute;
+  bottom: 6px;
+  right: 10px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.focus-img .item {
+  background: #333;
+  position: relative;
+  text-align: center;
+}
+
+.focus-img .item>span {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 40px;
+  background: #333;
+  filter: Alpha(Opacity=70);
+  -moz-opacity: 0.7;
+  opacity: 0.7;
+}
+
+.focus-img .item>p {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  width: 78%;
+  height: 40px;
+  line-height: 40px;
+  text-indent: 1em;
+  text-align: left;
+  color: #fefefe;
+  font-family: "Microsoft Yahei";
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.focus-img .owl-controls .owl-pagination {
+  margin: 0px;
+  padding: 0px;
+}
+
+.focus-img .owl-controls .owl-buttons {
+  display: none;
+}
+
+.focus-img .owl-controls .owl-page span {
+  display: block;
+  width: 7px;
+  height: 7px;
+  margin: 5px;
+  filter: Alpha(Opacity=30);
+  /*IE7 fix*/
+  opacity: 0.3;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  background: #eee;
+}
+
+.focus-img .owl-controls .owl-page.active span,
+.focus-img .owl-controls .owl-page:hover span {
+  filter: Alpha(Opacity=100);
+  /*IE7 fix*/
+  opacity: 1;
+}
+
+.focus-img .item>em {
+  display: none;
+}
+.focus-img .item img {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 720px) {
+  .focus-img .owl-controls {
+    display: none !important;
+  }
+  .focus-img .item {
+    background: #fefefe;
+  }
+  .focus-img .item>p {
+    width: 80%;
+  }
+  .focus-img .item>em {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+    margin: 0px;
+    padding: 0px;
+    height: 40px;
+    line-height: 40px;
+    font-style: normal;
+    color: #fefefe;
+  }
+}

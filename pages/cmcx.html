@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <base href="../assets/">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>重名查询</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="css/amazeui.min.css">
+    <!-- <link rel="stylesheet" href="css/app.css"> -->
+    <link rel="stylesheet" href="css/check.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/amazeui.min.js"></script>
+    <script src="js/urlHead.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?095edfec21fc74ce77584243f9070933";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+        
+</head>
+
+<body>
+    <script src="js/browser.js"></script>
+    <div class="am-g">
+        <form id="form-cmcx">
+            <div class="form-cells">
+                <div class="form-cell">
+                    <div class="form-cell__bd  am-form-icon">
+                        <i class="am-icon-search"></i>
+                        <input type="text" name="name" class="form-input" placeholder="请输入要查询的姓名">
+                    </div>
+                </div>
+            </div>
+            <div class="form-title">查询范围</div>
+            <div class="form-cells">
+                <div class="form-cell">
+                    <div class="form-cell__bd">
+                        <select name="city" class="form-select" style="border: none" id="city">
+                            <option value="410000">河南全省</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-cells hide">
+                <div class="form-cell">
+                    <div class="form-cell__bd">
+                        <select name="city" class="form-select" style="border: none" id="country">
+                            <option value="">河南省鹤壁市鹤山区</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(function () {
+                    "use strict";
+
+                    showDistrict();
+                    var auth = {
+                        "time_stamp": new Date().Format()
+                        // console.log($("select#city").val());
+                        // console.log($("select#city").text().replace(/\s/g,''));
+                    };
+                    var arr_city = [];
+                    var arr_country = [];
+                    $.ajax({
+                        url: URLHEAD + CMCX_CITY,
+                        data: {
+                            auth: JSON.stringify(auth)
+                        },
+                        type: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                        timeout: 5000,
+                        success: function success(res) {
+                            console.log(res);
+                            // let res = {
+                            //     "msg": "成功",
+                            //     "resultData": [{
+                            //             "orgName": "郑州市",
+                            //             "orgId": "410100"
+                            //         },
+                            //         {
+                            //             "orgName": "开封市",
+                            //             "orgId": "410200"
+                            //         },
+                            //         {
+                            //             "orgName": "洛阳市",
+                            //             "orgId": "410300"
+                            //         },
+                            //         {
+                            //             "orgName": "平顶山市",
+                            //             "orgId": "410400"
+                            //         },
+                            //         {
+                            //             "orgName": "安阳市",
+                            //             "orgId": "410500"
+                            //         },
+                            //         {
+                            //             "orgName": "鹤壁市",
+                            //             "orgId": "410600"
+                            //         },
+                            //         {
+                            //             "orgName": "新乡市",
+                            //             "orgId": "410700"
+                            //         },
+                            //         {
+                            //             "orgName": "焦作市",
+                            //             "orgId": "410800"
+                            //         },
+                            //         {
+                            //             "orgName": "濮阳市",
+                            //             "orgId": "410900"
+                            //         },
+                            //         {
+                            //             "orgName": "许昌市",
+                            //             "orgId": "411000"
+                            //         },
+                            //         {
+                            //             "orgName": "漯河市",
+                            //             "orgId": "411100"
+                            //         },
+                            //         {
+                            //             "orgName": "三门峡市",
+                            //             "orgId": "411200"
+                            //         },
+                            //         {
+                            //             "orgName": "南阳市",
+                            //             "orgId": "411300"
+                            //         },
+                            //         {
+                            //             "orgName": "商丘市",
+                            //             "orgId": "411400"
+                            //         },
+                            //         {
+                            //             "orgName": "信阳市",
+                            //             "orgId": "411500"
+                            //         },
+                            //         {
+                            //             "orgName": "周口市",
+                            //             "orgId": "411600"
+                            //         },
+                            //         {
+                            //             "orgName": "驻马店市",
+                            //             "orgId": "411700"
+                            //         },
+                            //         {
+                            //             "orgName": "济源市",
+                            //             "orgId": "410881"
+                            //         },
+                            //         {
+                            //             "orgName": "巩义市",
+                            //             "orgId": "410181"
+                            //         },
+                            //         {
+                            //             "orgName": "兰考县",
+                            //             "orgId": "410225"
+                            //         },
+                            //         {
+                            //             "orgName": "汝州市",
+                            //             "orgId": "410482"
+                            //         },
+                            //         {
+                            //             "orgName": "滑县",
+                            //             "orgId": "410526"
+                            //         },
+                            //         {
+                            //             "orgName": "长垣县",
+                            //             "orgId": "410728"
+                            //         },
+                            //         {
+                            //             "orgName": "邓州市",
+                            //             "orgId": "411381"
+                            //         },
+                            //         {
+                            //             "orgName": "永城市",
+                            //             "orgId": "411481"
+                            //         },
+                            //         {
+                            //             "orgName": "固始县",
+                            //             "orgId": "411525"
+                            //         },
+                            //         {
+                            //             "orgName": "鹿邑县",
+                            //             "orgId": "411628"
+                            //         },
+                            //         {
+                            //             "orgName": "新蔡县",
+                            //             "orgId": "411729"
+                            //         }
+                            //     ],
+                            //     "errCode": "0"
+                            // }
+                            // res = JSON.stringify(res)
+                            // console.log(res);
+                            res = JSON.parse(res);
+                            if (res.errCode == "0") {
+                                arr_city = res.resultData;
+                                var opt_html = "";
+                                arr_city.map(function (el, i) {
+                                    opt_html += "<option value=\"" + el.orgId + "\">" + el.orgName +
+                                        "</option>";
+                                });
+                                $("#city").append(opt_html);
+                            }
+                        },
+                        error: function error(err) {
+                            console.log(err);
+                            document.head.innerHTML =
+                                '<title>抱歉，出错了</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css">';
+                            document.body.innerHTML =
+                                '<div class="weui_msg"><div class="weui_icon_area"><i class="weui_icon_info weui_icon_msg"></i></div><div class="weui_text_area"><h4 class="weui_msg_title">服务器开小差了，请稍候再试</h4></div></div>';
+                        }
+                    });
+                    $("select#city").change(function () {
+                        showDistrict();
+                        console.log($(this).text());
+                        var city = $(this).val();
+                        var cityName = $("select#city").find("option:selected").text().replace(/\s/g,
+                            '');
+                        var info = {
+                            "cityId": city
+                        };
+                        var auth = {
+                            "time_stamp": new Date().Format()
+                        };
+                        $.ajax({
+                            url: URLHEAD + CMCX_POLICE,
+                            data: {
+                                info: JSON.stringify(info),
+                                auth: JSON.stringify(auth)
+                            },
+                            type: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+                            success: function success(res) {
+                                //    let  res = {
+                                //         "msg": "成功",
+                                //         "resultData": [{
+                                //             "orgName": "河南省新乡市红旗区",
+                                //             "orgId": "410702"
+                                //         }, {
+                                //             "orgName": "河南省新乡市卫滨区",
+                                //             "orgId": "410703"
+                                //         }, {
+                                //             "orgName": "河南省新乡市凤泉区",
+                                //             "orgId": "410704"
+                                //         }, {
+                                //             "orgName": "河南省新乡市牧野区",
+                                //             "orgId": "410711"
+                                //         }, {
+                                //             "orgName": "河南省新乡县",
+                                //             "orgId": "410721"
+                                //         }, {
+                                //             "orgName": "河南省获嘉县",
+                                //             "orgId": "410724"
+                                //         }, {
+                                //             "orgName": "河南省原阳县",
+                                //             "orgId": "410725"
+                                //         }, {
+                                //             "orgName": "河南省延津县",
+                                //             "orgId": "410726"
+                                //         }, {
+                                //             "orgName": "河南省封丘县",
+                                //             "orgId": "410727"
+                                //         }, {
+                                //             "orgName": "河南省卫辉市",
+                                //             "orgId": "410781"
+                                //         }, {
+                                //             "orgName": "河南省辉县市",
+                                //             "orgId": "410782"
+                                //         }],
+                                //         "errCode": "0"
+                                //     };
+                                res = JSON.parse(res);
+                                if (res.errCode == "0") {
+                                    $("#country").html("");
+                                    arr_country = res.resultData;
+                                    var opt_html = "<option value=\"" + city + "\">" +
+                                        cityName + "</option>";
+                                    arr_country.map(function (e, i) {
+                                        opt_html += "<option value=\"" + e.orgId +
+                                            "\">" + e.orgName + "</option>";
+                                    });
+                                    $("#country").append(opt_html);
+                                }
+                            },
+                            error: function error(err) {
+                                console.log(err);
+                                document.head.innerHTML =
+                                    '<title>抱歉，出错了</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css">';
+                                document.body.innerHTML =
+                                    '<div class="weui_msg"><div class="weui_icon_area"><i class="weui_icon_info weui_icon_msg"></i></div><div class="weui_text_area"><h4 class="weui_msg_title">服务器开小差了，请稍候再试</h4></div></div>';
+                            }
+                        });
+                    });
+
+                    function showDistrict() {
+                        if ($("#city").val() == "410000") {
+                            $("#country").parents('.form-cells').addClass('hide');
+                        } else {
+                            $("#country").parents('.form-cells').removeClass('hide');
+                        }
+                    }
+                })
+            </script>
+
+            <div class="btns-group">
+                <button type="button" class="am-btn am-round am-btn-primary am-btn-block" onclick="check()">查询</button>
+            </div>
+        </form>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="res-cmcx">
+        <div class="am-modal-dialog  am-round">
+            <div class="am-modal-hd">提示</div>
+            <div class="am-modal-bd">
+                <span id="status"></span>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        "use strict";
+        
+        function check() {
+            var name = $("input[name='name']").val().replace(/\s/g, "");
+            var city = $("select#city").val().replace(/\s/g, "");
+            var country = $("select#country").val().replace(/\s/g, "");
+            console.log(city);
+            console.log(country);
+            if (name == '') {
+                $('#status').text('名字不能为空');
+                $('#res-cmcx').modal('open');
+            } else {
+                var info = {
+                    "deptId": country == "" ? city : country,
+                    "name": name
+                };
+                var auth = {
+                    "time_stamp": new Date().Format()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: URLHEAD + CMCX,
+                    data: {
+                        info: JSON.stringify(info),
+                        auth: JSON.stringify(auth)
+                    },
+                    success: function success(res) {
+                        // let res = {"msg":"成功","resultData":"116","errCode":"0"}
+                        res = JSON.parse(res);
+                        var errCode = res.errCode;
+                        switch (errCode) {
+                            case '0':
+                                $('#status').text('与你重名的有' + res.resultData + '人');
+                                $('#res-cmcx').modal('open');
+                                break;
+                            case '1':
+                            case '10':
+                                $('#status').text(res.msg);
+                                $('#res-cmcx').modal('open');
+                                break;
+                            case '12':
+                                $('#status').text('服务器睡着了，多试几次叫醒它...');
+                                $('#res-cmcx').modal('open');
+                                break;
+                        }
+                    },
+                    error: function error(err) {
+                        $('#status').text('服务器繁忙...');
+                        $('#res-cmcx').modal('open');
+                    },
+                    complete: function complete(XMLHttpRequest, status) {
+                        //请求完成后最终执行参数
+                        if (status == 'timeout') {
+                            //超时,status还有success,error等值的情况
+                            $('#status').text('请求超时...');
+                            $('#res-cmcx').modal('open');
+                        }
+                    }
+                });
+            }
+        }
+        window.check = check;
+    })
+</script>
+
+</html>

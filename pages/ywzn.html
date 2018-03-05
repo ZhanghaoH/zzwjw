@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <base href="../assets/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>业务指南</title>
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/amazeui.min.js"></script>
+  <script src="js/urlHead.js"></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?095edfec21fc74ce77584243f9070933";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+  <style>
+    a {
+      color: #666
+    }
+
+    .am-list>li {
+      border: none
+    }
+  </style>
+</head>
+
+<body>
+  <script src="js/browser.js"></script>
+  <!-- 户证业务指南 -->
+  <ol class="am-list am-list-static am-list-border am-list-striped" id="ywzn" style="margin-top:0">
+    <!-- <li><a href="">刑满释放人员</a></li> -->
+  </ol>
+  <script>
+    "use strict";
+
+    var info = {
+      "caseKindType": "2",
+      "casePoliceCategory": "6"
+    };
+    var auth = {
+      "time_stamp": new Date().Format()
+    };
+    var ajaxTimeoutTest = $.ajax({
+      type: "POST",
+      url: URLHEAD + HZLIST,
+      data: {
+        info: JSON.stringify(info),
+        auth: JSON.stringify(auth)
+      },
+      dataType: "json",
+      timeout: 5000,
+      success: function success(res) {
+        console.log(res);
+        // res = JSON.parse(res);
+        // let res = {"msg":"成功","resultData":"[{\"caseKindType\":\"2\",\"caseName\":\"刑满释放人员恢复户口\",\"caseNo\":\"HZ-41132871-001611\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"c71e2284-3fe4-46d5-aa99-1306b107e519\"},{\"caseKindType\":\"2\",\"caseName\":\"出国（境）定居注销户口\",\"caseNo\":\"HZ-41132871-002011\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"0d21e0eb-64f9-4f2b-913f-2ba3984ebb61\"},{\"caseKindType\":\"2\",\"caseName\":\"设立单位集体户口\",\"caseNo\":\"HZ-41132871-001711\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"a1656879-0f99-4f28-b955-15eab9706440\"},{\"caseKindType\":\"2\",\"caseName\":\"户口簿遗失补发\",\"caseNo\":\"HZ-41132871-002911\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"961b058d-eb1e-459b-a3ba-9b4c9e572b63\"},{\"caseKindType\":\"2\",\"caseName\":\"迁移证补发\",\"caseNo\":\"HZ-41132871-003011\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"379f1710-25ce-4e6b-ace0-ea772a7c4475\"},{\"caseKindType\":\"2\",\"caseName\":\"工作调动入户\",\"caseNo\":\"HZ-41132871-000511\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"5c4ba727-d660-4ab1-9bef-2d7c01a0c05b\"},{\"caseKindType\":\"2\",\"caseName\":\"夫妻投靠\",\"caseNo\":\"HZ-41132871-000611\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"dfdc9ef1-ba2a-4a00-abbb-d187f33ec079\"},{\"caseKindType\":\"2\",\"caseName\":\"父母投靠子女\",\"caseNo\":\"HZ-41132871-000711\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"fa2417f0-0391-49e7-8822-d78f2961c21b\"},{\"caseKindType\":\"2\",\"caseName\":\"子女投靠父母\",\"caseNo\":\"HZ-41132871-000811\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"f30cd595-1f04-4069-9c0c-05bdf1117783\"},{\"caseKindType\":\"2\",\"caseName\":\"弃婴入户\",\"caseNo\":\"HZ-41132871-001211\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"8f65e6e5-f8b9-4616-8da9-02a88f0dfbb4\"},{\"caseKindType\":\"2\",\"caseName\":\"务工人员入户\",\"caseNo\":\"HZ-41132871-000911\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"f4506b31-0ee9-4bed-b8c4-5fb424a427e8\"},{\"caseKindType\":\"2\",\"caseName\":\"大中专院校毕业学生迁入\",\"caseNo\":\"HZ-41132871-001111\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"a850ee89-692d-4ed6-909f-7ac3f1885e38\"},{\"caseKindType\":\"2\",\"caseName\":\"收养入户\",\"caseNo\":\"HZ-41132871-001311\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"4293653a-ed39-4304-8933-8a34868233af\"},{\"caseKindType\":\"2\",\"caseName\":\"死亡登记\",\"caseNo\":\"HZ-41132871-001911\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"e0945bbb-a15d-4599-b2b7-751fe97dd838\"},{\"caseKindType\":\"2\",\"caseName\":\"回国（入境）恢复户口\",\"caseNo\":\"HZ-41132871-001411\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"ad0b7ebc-7621-4c00-82df-afe8a2ab8c7b\"},{\"caseKindType\":\"2\",\"caseName\":\"转业、复员、退伍军人入户\",\"caseNo\":\"HZ-41132871-001511\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"7b410743-32b8-4297-8aff-a1ce5f77f4bb\"},{\"caseKindType\":\"2\",\"caseName\":\"入伍注销户口\",\"caseNo\":\"HZ-41132871-002111\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"30b24388-84b6-437f-9248-49f092c37f0c\"},{\"caseKindType\":\"2\",\"caseName\":\"大中专院校录取学生迁入\",\"caseNo\":\"HZ-41132871-001011\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"3112a729-7df1-4b0c-8774-24befacf2920\"},{\"caseKindType\":\"2\",\"caseName\":\"变更民族成分\",\"caseNo\":\"HZ-41132871-002411\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"3236cde1-aa16-4a7f-853e-f01f65500cb9\"},{\"caseKindType\":\"2\",\"caseName\":\"变更性别\",\"caseNo\":\"HZ-41132871-002611\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"4a2b07f8-e782-4a9c-9875-9057deba264c\"},{\"caseKindType\":\"2\",\"caseName\":\"变更文化程度、婚姻状况\",\"caseNo\":\"HZ-41132871-002811\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"29ec80bd-ddc7-4eab-94a8-563251b363d4\"},{\"caseKindType\":\"2\",\"caseName\":\"迁往市（县）外（有准迁证）\",\"caseNo\":\"HZ-41132871-002211\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"ebf3800c-b978-41e3-9343-55cf26828653\"},{\"caseKindType\":\"2\",\"caseName\":\"大中专院校录取学生迁出\",\"caseNo\":\"HZ-41132871-002311\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"da7dfd6d-bac2-4a78-b173-39b7d4c50ec6\"},{\"caseKindType\":\"2\",\"caseName\":\"变更户主或与户主关系\",\"caseNo\":\"HZ-41132871-002711\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"374e6188-3d11-43e2-832c-eb77c8ab301c\"},{\"caseKindType\":\"2\",\"caseName\":\"分户、立户\",\"caseNo\":\"HZ-41132871-001811\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"70e326f3-d43c-4a2f-ad8d-1b22c8c5972d\"},{\"caseKindType\":\"2\",\"caseName\":\"准迁证补发\",\"caseNo\":\"HZ-41132871-003111\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"aedf5af1-5c06-4052-9965-876c05b349ef\"},{\"caseKindType\":\"2\",\"caseName\":\"变更姓名\",\"caseNo\":\"HZ-41132871-002511\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"23b69f35-e02b-4b96-9a87-c4c6eb6552fa\"},{\"caseKindType\":\"2\",\"caseName\":\"购房入户\",\"caseNo\":\"HZ-41132871-000311\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"b363cdc9-8e88-456d-b049-e0560eea9517\"},{\"caseKindType\":\"2\",\"caseName\":\"出生登记（持省内新版出生证）\",\"caseNo\":\"HZ-41132871-000111\",\"casePoliceCategory\":\"6\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"3a9762fc-365e-427a-ac1d-f52962211734\"}]","errCode":"0"}
+        if (res.errCode == "0") {
+          var resData = JSON.parse(res.resultData);
+          window.localStorage.setItem('ywzn', res.resultData);
+          var ulYw = "";
+          resData.map(function (el, index) {
+            ulYw += "<li><a href=\"../pages/ywxq.html?guid=" + el.guid + "\">" + (index + 1) + "." + el.caseName +
+              "</a></li>";
+          });
+          $('#ywzn').html(ulYw);
+        }
+      },
+      error: function error(err) {
+        console.log(err);
+        document.head.innerHTML =
+          '<title>抱歉，出错了</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css">';
+        document.body.innerHTML =
+          '<div class="weui_msg"><div class="weui_icon_area"><i class="weui_icon_info weui_icon_msg"></i></div><div class="weui_text_area"><h4 class="weui_msg_title">服务器开小差了，请稍候再试</h4></div></div>';
+      },
+      complete: function complete(XMLHttpRequest, status) {
+        //请求完成后最终执行参数
+        if (status == 'timeout') {
+          //超时,status还有success,error等值的情况
+          ajaxTimeoutTest.abort();
+          document.head.innerHTML =
+            '<title>抱歉，出错了</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css">';
+          document.body.innerHTML =
+            '<div class="weui_msg"><div class="weui_icon_area"><i class="weui_icon_info weui_icon_msg"></i></div><div class="weui_text_area"><h4 class="weui_msg_title">请求超时</h4></div></div>';
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

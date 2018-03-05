@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <base href="../assets/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>业务详情</title>
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/amazeui.min.js"></script>
+  <script src="js/urlHead.js"></script>
+  <!-- <script src="js/amazeui.min.js"></script> -->
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?095edfec21fc74ce77584243f9070933";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+
+<body>
+  <script src="js/browser.js"></script>
+  <div class="am-g am-g-fixed" id="ywxq" style="padding-top: 25px">
+    <div class="yw-item">
+      <span class="yw-item-label">事项性质：</span>
+    </div>
+    <div class="yw-item">
+      <span class="yw-item-label">办件类型：</span>
+    </div>
+    <div class="yw-item">
+      <span class="yw-item-label">法定周期：</span>
+    </div>
+    <div class="yw-item">
+      <span class="yw-item-label">承诺周期：</span>
+    </div>
+    <div class="yw-item">
+      <span class="yw-item-label">收费信息：</span>
+    </div>
+    <div class="yw-item">
+      <span class="yw-item-label">办事指南</span>
+    </div>
+    <div class="yw-item">
+      <span class="yw-item-label">审批（办事）依据</span>
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+    <div class="yw-item">
+      <span class="yw-item-label">申请材料</span>
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+  <style>
+    .yw-item {
+      padding: 0 15px;
+      line-height: 2.0
+    }
+
+    .item-list {
+      list-style: none;
+      padding-left: 5px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  </style>
+</body>
+<script>
+  $(function () {
+    'use strict';
+
+    var SEARCH = parseURL(window.location.search);
+    var ywList = JSON.parse(window.localStorage.getItem('ywzn'));
+    $('title').text(SEARCH.title);
+    var info = {
+      "caseGuid": SEARCH.guid
+    };
+    var auth = {
+      "time_stamp": new Date().Format()
+    };
+    ywList.map(function (el, index) {
+      if (el.guid == SEARCH.guid) {
+        $('title').html(el.caseName);
+      }
+    });
+    var ajaxTimeoutTest = $.ajax({
+      type: "POST",
+      url: URLHEAD + HZITEM,
+      data: {
+        info: JSON.stringify(info),
+        auth: JSON.stringify(auth)
+      },
+      dataType: "json",
+      timeout: 5000,
+      success: function success(res) {
+        console.log(res);
+        // res = JSON.parse(res)
+        // let res = {
+        //   "msg": "成功",
+        //   "resultData": "{\"basisList\":\"[{\\\"basisContent\\\":\\\"《中华人民共和国公民出境入境管理法实施细则》\\\",\\\"caseGuid\\\":\\\"0d21e0eb-64f9-4f2b-913f-2ba3984ebb61\\\",\\\"guid\\\":\\\"cc7e2b71-cc47-41b3-8a06-555e6c8b1eda\\\",\\\"orderIndex\\\":\\\"1\\\",\\\"basisName\\\":\\\"《中华人民共和国公民出境入境管理法实施细则》\\\"}]\",\"caseKindType\":\"2\",\"caseName\":\"出国（境）定居注销户口\",\"caseNo\":\"HZ-41132871-002011\",\"caseProptery\":\"2\",\"caseType\":\"2\",\"guid\":\"0d21e0eb-64f9-4f2b-913f-2ba3984ebb61\",\"isEms\":\"1\",\"isPay\":\"0\",\"legalPromiseDays\":\"25\",\"materialList\":\"[{\\\"sType\\\":\\\"0\\\",\\\"material\\\":\\\"注销人的《居民身份证》、《户口簿》\\\",\\\"isMust\\\":\\\"1\\\",\\\"caseGuid\\\":\\\"0d21e0eb-64f9-4f2b-913f-2ba3984ebb61\\\",\\\"guid\\\":\\\"d204706e-a7a4-4952-81b0-0a117bfdcb35\\\",\\\"orderIndex\\\":\\\"365\\\"},{\\\"material\\\":\\\"注销人出入国（境）有效证照；\\\",\\\"isMust\\\":\\\"1\\\",\\\"caseGuid\\\":\\\"0d21e0eb-64f9-4f2b-913f-2ba3984ebb61\\\",\\\"guid\\\":\\\"fe872cae-026c-4806-add2-8b207c518c8a\\\",\\\"orderIndex\\\":\\\"2\\\"},{\\\"material\\\":\\\"申请人书面申请；\\\",\\\"isMust\\\":\\\"1\\\",\\\"caseGuid\\\":\\\"0d21e0eb-64f9-4f2b-913f-2ba3984ebb61\\\",\\\"guid\\\":\\\"3a4d89ea-784a-4d97-a5d7-269bab959606\\\",\\\"orderIndex\\\":\\\"1\\\"}]\",\"promiseDays\":\"25\",\"theirGuide\":\"1、派出所对申请人提供的材料进行核实，材料齐全的立即核准。2、经核准办理的，申请人须持申报材料原件及复印件，在60日内到户籍所在地派出所户籍窗口办理。逾期未办理的应当重新提交申请。\"}",
+        //   "errCode": "0"
+        // }
+        if (res.errCode == "0") {
+          $("#ywxq").html('');
+          var resData = JSON.parse(res.resultData);
+          var caseType = void 0,
+            caseProperty = void 0;
+          switch (resData.caseType) {
+            case "1":
+              caseType = "即办件";
+              break;
+            case "2":
+              caseType = "承诺件";
+              break;
+            case "3":
+              caseType = "预约件";
+              break;
+            default:
+              break;
+          };
+          switch (resData.caseProptery) {
+            case "1":
+              caseProperty = "公示";
+              break;
+            case "2":
+              caseProperty = "申报";
+              break;
+            case "3":
+              caseProperty = "预约";
+              break;
+            default:
+              break;
+          };
+          var ywHtml =
+            '<div class="yw-item">\n              <span class="yw-item-label">\u4E8B\u9879\u6027\u8D28\uFF1A</span>' +
+            caseProperty +
+            '\n            </div>\n            <div class="yw-item">\n              <span class="yw-item-label">\u529E\u4EF6\u7C7B\u578B\uFF1A</span>' +
+            caseType +
+            '\n            </div>\n            <div class="yw-item">\n              <span class="yw-item-label">\u6CD5\u5B9A\u5468\u671F\uFF1A</span>' +
+            resData.legalPromiseDays +
+            '\n            </div>\n            <div class="yw-item">\n              <span class="yw-item-label">\u627F\u8BFA\u5468\u671F\uFF1A</span>' +
+            resData.promiseDays +
+            '\n            </div>\n            <div class="yw-item">\n              <span class="yw-item-label">\u6536\u8D39\u4FE1\u606F\uFF1A</span>' +
+            (resData.isPay == "0" ? "否" : "是") +
+            '\n            </div>\n            <div class="yw-item">\n              <span class="yw-item-label">\u529E\u4E8B\u6307\u5357</span><div>' +
+            resData.theirGuide + '</div>  \n            </div> ';
+          $("#ywxq").html(ywHtml);
+          var materialList = JSON.parse(resData.materialList);
+          var materHtml =
+            '<div class="yw-item"><span class="yw-item-label">申请材料</span><ul class="item-list">';
+          materialList.map(function (el, index) {
+            materHtml += '<li>' + (index + 1) + '.' + el.material + '</li>';
+          });
+          materHtml += ' </ul></div>';
+          var basisList = JSON.parse(resData.basisList);
+          var basisHtml =
+            '<div class="yw-item"><span class="yw-item-label">审批（办事）依据</span><ul class="item-list">';
+          basisList.map(function (el, index) {
+            basisHtml += '<li>' + (index + 1) + '.' + el.basisName + '</li>';
+          });
+          basisHtml += ' </ul></div>';
+          $("#ywxq").append(basisHtml + materHtml);
+        }
+      },
+      error: function error(err) {
+        console.log(err);
+        document.head.innerHTML =
+          '<title>抱歉，出错了</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css">';
+        document.body.innerHTML =
+          '<div class="weui_msg"><div class="weui_icon_area"><i class="weui_icon_info weui_icon_msg"></i></div><div class="weui_text_area"><h4 class="weui_msg_title">服务器开小差了，请稍候再试</h4></div></div>';
+      },
+      complete: function complete(XMLHttpRequest, status) {
+        //请求完成后最终执行参数
+        if (status == 'timeout') {
+          //超时,status还有success,error等值的情况
+          ajaxTimeoutTest.abort();
+          document.head.innerHTML =
+            '<title>抱歉，出错了</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"><link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/0.4.1/weui.css">';
+          document.body.innerHTML =
+            '<div class="weui_msg"><div class="weui_icon_area"><i class="weui_icon_info weui_icon_msg"></i></div><div class="weui_text_area"><h4 class="weui_msg_title">请求超时</h4></div></div>';
+        }
+      }
+    });
+
+    function parseURL(url) {
+      var url = url.split("?")[1];
+      var para = url.split("&");
+      var len = para.length;
+      var res = {};
+      var arr = [];
+      for (var i = 0; i < len; i++) {
+        arr = para[i].split("=");
+        res[arr[0]] = arr[1];
+      }
+      return res;
+    }
+  })
+</script>
+
+</html>

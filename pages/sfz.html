@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <base href="../assets/">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>身份证办理进度查询</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="css/amazeui.min.css">
+    <!-- <link rel="stylesheet" href="css/app.css"> -->
+    <link rel="stylesheet" href="css/check.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/amazeui.min.js"></script>
+    <script src="js/urlHead.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?095edfec21fc74ce77584243f9070933";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+        
+</head>
+
+<body>
+    <script src="js/browser.js"></script>
+    <div class="am-g">
+        <form>
+            <div class="form-cells">
+                <div class="form-cell">
+                    <div class="form-cell__bd">
+                        <input name="idCard" type="text" class="form-input" placeholder="请输入身份证号">
+                    </div>
+                </div>
+            </div>
+            <div class="btns-group">
+                <button type="button" class="am-btn am-round am-btn-primary am-btn-block" onclick="check()">查询</button>
+            </div>
+        </form>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="res-sfz">
+        <div class="am-modal-dialog am-round">
+            <div class="am-modal-hd">提示</div>
+            <div class="am-modal-bd">
+                <span id="status">结果返回中</span>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function () {
+        "use strict";
+
+        var REGID = new RegExp(
+            "^((1[1-5])|(2[1-3])|(3[1-7])|(4[1-6])|(5[0-4])|(6[1-5])|71|(8[12])|91)\\d{4}(((19|20)\\d{2}(0[13-9]|1[012])(0[1-9]|[12]\\d|30))|((19|20)\\d{2}(0[13578]|1[02])31)|((19|20)\\d{2}02(0[1-9]|1\\d|2[0-8]))|((19|20)([13579][26]|[2468][048]|0[048])0229))\\d{3}(\\d|X|x)?$"
+        );
+
+        function check() {
+            window.localStorage.removeItem('res');
+            var idCard = $("input[name='idCard']").val().replace(/\s/g, "");
+            var isidCard = REGID.exec(idCard);
+            console.log(isidCard);
+            if (isidCard == null) {
+                $('#status').text('请输入正确的身份证号');
+                $('#res-sfz').modal('open');
+            } else {
+                var info = {
+                    "idCard": idCard
+                };
+                var auth = {
+                    "time_stamp": new Date().Format()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: URLHEAD + SFZ,
+                    data: {
+                        info: JSON.stringify(info),
+                        auth: JSON.stringify(auth)
+                    },
+                    timeout: 5000,
+                    success: function success(res) {
+                        // let res = {
+                        //     "msg": "成功",
+                        //     "resultData": [{
+                        //             "gmSfhm": "411381198902161574",
+                        //             "xtbsMc": "派出所受理",
+                        //             "slrq": "2017-05-19 09:09:12"
+                        //         },
+                        //         {
+                        //             "gmSfhm": "411381198902161574",
+                        //             "xtbsMc": "进入制证",
+                        //             "slrq": "2017-05-19 15:37:55"
+                        //         },
+                        //         {
+                        //             "gmSfhm": "411381198902161574",
+                        //             "xtbsMc": "已制证",
+                        //             "slrq": "2017-06-01 15:12:27"
+                        //         }
+                        //     ],
+                        //     "errCode": "0"
+                        // }
+                        res = JSON.parse(res);
+                        var errCode = res.errCode;
+                        switch (errCode) {
+                            case '0':
+                                window.localStorage.setItem('res', JSON.stringify(res.resultData));
+                                window.location.assign('../pages/res_sfz.html');
+                                break;
+                            case '1':
+                            case '10':
+                                $('#status').text(res.msg);
+                                $('#res-sfz').modal('open');
+                                break;
+                            case '12':
+                                $('#status').text('服务器睡着了，多试几次叫醒它...');
+                                $('#res-sfz').modal('open');
+                                break;
+                        }
+                    },
+                    error: function error(err) {
+                        $('#status').text('服务器繁忙...');
+                        $('#res-sfz').modal('open');
+                    },
+                    complete: function complete(XMLHttpRequest, status) {
+                        //请求完成后最终执行参数
+                        if (status == 'timeout') {
+                            //超时,status还有success,error等值的情况
+                            $('#status').text('请求超时...');
+                            $('#res-sfz').modal('open');
+                        }
+                    }
+                });
+            }
+        }
+        window.check = check;
+    })
+</script>
+
+</html>

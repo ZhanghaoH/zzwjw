@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <base href="../assets/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="renderer" content="webkit">
+  <title>出入境证件信息</title>
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/result.css">
+  <script src="js/jquery.min.js"></script>
+  <script>
+    $(function () {
+      // const broswer = _BROSWER.detect()
+      // if (broswer.broswer != "WeiXin") {
+      //   window.location.assign('../error.html')
+      // }
+    })
+  </script>
+</head>
+
+<body>
+  <script src="js/browser.js"></script>
+  <ul class="am-list res-list" id="resUl">
+    <li>
+      <div class="item">
+        <span class="item-lable">证件姓名：</span>
+        <span class="item-cnt">${resData.ZWXM}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">证件类型：</span>
+        <span class="item-cnt">${resData.ZJZL}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">证件号码：</span>
+        <span class="item-cnt">${resData.ZJHM}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">有效期始：</span>
+        <span class="item-cnt">${resData.QFRQ}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">有效期止：</span>
+        <span class="item-cnt">${resData.YXQZ}</span>
+      </div>
+    </li>
+  </ul>
+</body>
+<script>
+  $(function ($) {
+    'use strict';
+
+    var res = window.localStorage.getItem('res');
+    var resData = JSON.parse(res);
+    var res_html = '';
+    // if (resData.length > 0) {
+    //   resData.map((el, index) => {
+    res_html +=
+      '<li>\n          <div class="item">\n            <span class="item-lable">\u8BC1\u4EF6\u59D3\u540D\uFF1A</span><span class="item-cnt">' +
+      resData.ZWXM +
+      '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u8BC1\u4EF6\u7C7B\u578B\uFF1A</span><span class="item-cnt">' +
+      resData.ZJZL +
+      '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u8BC1\u4EF6\u53F7\u7801\uFF1A</span><span class="item-cnt">' +
+      resData.ZJHM +
+      '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u6709\u6548\u671F\u59CB\uFF1A</span><span class="item-cnt">' +
+      resData.QFRQ +
+      '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u6709\u6548\u671F\u6B62\uFF1A</span><span class="item-cnt">' +
+      resData.YXQZ + '</span>\n          </div>\n        </li>';
+    $('#resUl').html(res_html);
+    //   })
+    // }
+    // console.log(Object.prototype.toString.call(resData));
+    // console.log(resData.constructor);
+  })
+</script>
+
+</html>

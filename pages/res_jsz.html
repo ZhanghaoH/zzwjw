@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <base href="../assets/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="renderer" content="webkit">
+  <title>驾驶证详情</title>
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <style>
+    :root {
+      --main-color: #999;
+      --active-color: #1386e3;
+      --bg-color: #f8f8f8;
+    }
+    
+    html,
+    body {
+      background-color: var(--bg-color);
+      color: #666;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .res-list>li {
+      background-color: #fff;
+      margin: 10px 15px 0;
+      border: 1px solid #d9d9d9;
+      border-top: 10px solid var(--active-color);
+      border-radius: 6px;
+    }
+    
+    .item {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      margin: 0 15px;
+      line-height: 1.8;
+      border-bottom: 1px solid #d9d9d9;
+    }
+    
+    .item:last-child {
+      border-bottom: none;
+    }
+    
+    .item span {
+      margin-left: 10px;
+      padding: 8px 0;
+    }
+    
+    .item>span:first-child {
+      margin-left: 0;
+    }
+    </style>
+  <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <script src="js/browser.js"></script>
+  <ul class="am-list res-list">
+    <li>
+      <div class="item">
+        <span class="item-cnt" id="name">xxx</span>
+        <span class="item-cnt" id="sfzh">xxxx</span>
+      </div>
+      <div class="item">
+        <span class="item-cnt" id="dabh">xxxx</span>
+        <span class="item-label">准驾车型<span class="item-cnt" id="zjcx">xx</span></span>
+        <span class="item-label">记分<span id="ljjf">xxx</span></span>
+      </div>
+      <div class="item">
+        <span class="item-label">准驾期限<span class="item-cnt" id="yxqs" style="margin-right: 15px">xxxx</span>~
+        <span class="item-cnt" id="yxqz">xxxx</span>
+        </span>
+      </div>
+    </li>
+  </ul>
+</body>
+<script>
+  $(function ($) {
+    var res = window.localStorage.getItem('res')
+    var resData = JSON.parse(res)
+    $('#name').text(resData.xm)
+    $('#sfzh').text(resData.sfzmhm)
+    $('#dabh').text(resData.dabh)
+    $('#zjcx').text(resData.zjcx)
+    $('#ljjf').text(resData.ljjf)
+    $('#yxqs').text(resData.yxqs)
+    $('#yxqz').text(resData.yxqz)
+  })
+</script>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <base href="../assets/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="renderer" content="webkit">
+  <title>保安员证件进度信息</title>
+  <link rel="stylesheet" href="css/amazeui.min.css">
+  <link rel="stylesheet" href="css/result.css">
+  <script src="js/jquery.min.js"></script>
+  <script>
+    $(function () {
+      // const broswer = _BROSWER.detect()
+      // if (broswer.broswer != "WeiXin") {
+        //   window.location.assign('../error.html')
+        // }
+      })
+      </script>
+</head>
+
+<body>
+  <script src="js/browser.js"></script>
+  <ul class="am-list res-list" id="resUl">
+    <li>
+      <div class="item">
+        <span class="item-lable">姓&emsp;&emsp;名：</span><span class="item-cnt">{{itemName.fssj}}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">身份证号：</span><span class="item-cnt">{{itemName.bllx}}</span>
+      </div>
+      <div class="item">
+        <span class="item-lable">办理状态：</span><span class="item-cnt">{{itemName.sfzh}}</span>
+      </div>
+    </li>
+  </ul>
+</body>
+<script>
+  $(function($){
+    'use strict';
+    
+    var res = window.localStorage.getItem('res');
+    var resData = JSON.parse(res);
+    var res_html = '';
+    if (resData.length > 0) {
+      resData.map(function (el, index) {
+        res_html += '<li>\n          <div class="item">\n            <span class="item-lable">\u59D3&emsp;&emsp;\u540D\uFF1A</span><span class="item-cnt">' + el.xm + '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u8EAB\u4EFD\u8BC1\u53F7\uFF1A</span><span class="item-cnt">' + el.sfzh + '</span>\n          </div>\n          <div class="item">\n            <span class="item-lable">\u529E\u7406\u72B6\u6001\uFF1A</span><span class="item-cnt">' + el.sjztmc + '</span>\n          </div>\n        </li>';
+      });
+      $('#resUl').html(res_html);
+    }
+    // console.log(Object.prototype.toString.call(resData));
+    // console.log(resData.constructor);
+  })
+</script>
+</html>

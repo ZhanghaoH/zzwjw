@@ -1,0 +1,202 @@
+@charset "UTF-8";
+:root {
+    --main-color: #666;
+    --active-color: #1386e3;
+    --primary-color: #1386e3;
+    --bg-color: #f8f8f8;
+    --border-color: #d9d9d9;
+    --font-size: 14px;
+}
+
+html,
+body {
+    /* background-color: var(--bg-color); */
+    background-color: #f8f8f8;
+    /* color: var(--main-color); */
+    color: #666;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input {
+    border: none;
+    outline: 0;
+    background: none;
+    display: block;
+    padding: 0;
+}
+
+
+/*select*/
+
+select {
+    /*复写Chrome和Firefox里面的边框*/
+    border: 1px solid green;
+    /*清除默认样式*/
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    /*在选择框的最右侧中间显示小箭头图片*/
+    background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+    /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+    padding-right: 14px;
+}
+
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+
+select::-ms-expand {
+    display: none;
+}
+
+
+/* overwrite the frame css */
+
+.am-btn-primary {
+    color: #fff;
+    /* background-color: var(--primary-color); */
+    background-color: #1386e3;
+    /* border-color: var(--primary-color); */
+    border-color: #1386e3;
+}
+
+.am-round {
+    border-radius: 6px;
+}
+
+.am-btn.am-round {
+    border-radius: 6px;
+}
+
+.am-radio {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.am-form-icon .form-input {
+    padding-left: 20px;
+}
+
+.am-form-icon [class*=am-icon-] {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    display: block;
+    margin-top: -.5em;
+    line-height: 1;
+    z-index: 2;
+}
+
+
+/* the desc. under the form */
+
+form {
+    margin: 0 1.5rem 1.5rem;
+}
+
+.form-tips {
+    margin-top: 1.0rem;
+    color: #999;
+    text-align: right;
+    /* font-size: var(--font-size); */
+    font-size: 14px;
+}
+
+.form-title {
+    margin-top: 1.0rem;
+    color: #333;
+    text-align: center;
+    /* font-size: var(--font-size); */
+    font-size: 14px;
+}
+
+.form-cells {
+    border-radius: 6px;
+    background-color: #fff;
+    /* border: 1px solid var(--border-color); */
+    border: 1px solid #d9d9d9;
+    margin-top: 15px;
+}
+
+.form-cell:first-child::before {
+    display: none;
+}
+
+.form-cell::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    /* border-top: 1px solid var(--border-color); */
+    border-top: 1px solid #d9d9d9;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form-cell {
+    padding: 10px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 14px
+}
+
+.form-cell__bd {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.form-cell__hd {
+    margin-right: 10px;
+}
+.form-radio {
+    /* border: 1px solid var(--border-color); */
+    border: 1px solid #d9d9d9;
+    color: var(--main-color);
+    color: #666;
+    padding: 2px 6px; 
+    display: flex;
+    align-items: center;
+}
+.form-radio:not(:first-child) {
+    margin-left: 15px
+}
+.form-radio.form-radio-active  {
+    border: 1px solid #1386e3;
+    color: var(--active-color);
+    color: #1386e3;
+}
+#ev.form-radio-active  {
+    border: 1px solid #72ce52;
+    color: #72ce52;
+}
+.radio-img {
+    /* height: 18px; */
+    width: 25px;
+    margin-right: 5px;
+}
+.form-input,
+.form-select {
+    height: 2.5rem;
+    min-height: 2.5rem;
+    line-height: 2.5rem;
+    width: 100%;
+    font-size: 14px;
+}
+
+
+/* btns wrapper */
+
+.btns-group {
+    margin: 1.5rem 0 .3rem;
+}
+.hide {
+    display: none;
+}

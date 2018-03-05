@@ -1,0 +1,178 @@
+html, body {
+  background-color: #fff;
+}
+.grid li a {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  padding: 1rem;
+  font-size: 1.4rem;
+}
+.label {
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  /* height: 5.0rem; */
+}
+/* menu icons */
+i[class*='icon-menu-'] {
+  display: inline-block;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-bottom: .5rem;
+}
+/* tab hotSearch */
+i.icon-menu-wfcx {
+  background: url(../i/hot_wfcx.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-crjzj {
+  background: url(../i/hot_crjzj.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-jsz {
+  background: url(../i/hot_jsz.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-sfz {
+  background: url(../i/hot_sfz.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-jzz {
+  background: url(../i/hot_jzz.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-cmcx {
+  background: url(../i/hot_cmcx.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-cjfb {
+  background: url(../i/hot_cjfb.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-crjbl {
+  background: url(../i/hot_crjbl.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-bayzjd {
+  background: url(../i/hot_bayzjd.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-baycj {
+  background: url(../i/hot_baycj.png) no-repeat center center;
+  background-size: contain;
+}
+/* tab interact */
+i.icon-menu-zxjb {
+  background: url(../i/interact_zxjb.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-jzxx {
+  background: url(../i/interact_jzxx.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-wsxf {
+  background: url(../i/interact_wsxf.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-jdts {
+  background: url(../i/interact_jdts.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-jtssp {
+  background: url(../i/interact_jtssp.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-wxbj {
+  background: url(../i/interact_wxbj.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-shce {
+  background: url(../i/interact_shce.png) no-repeat center center;
+  background-size: contain;
+}
+/* tab party */
+i.icon-menu-jjjw {
+  background: url(../i/party_jjjw.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-jjyw {
+  background: url(../i/party_jjyw.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-ymjgs {
+  background: url(../i/party_ymjgs.png) no-repeat center center;
+  background-size: contain;
+}
+i.icon-menu-ynjjy {
+  background: url(../i/party_ynjjy.png) no-repeat center center;
+  background-size: contain;
+}
+/* slogan wrapper ( invalid now ) */
+.pop-wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+/* slogan content */
+.slogan {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.slogan li {
+  border: 1px  solid var(--active-color);
+  color: var(--active-color);
+  line-height: 1.8;
+  padding: 0 1.5rem;
+  font-size: 14px;
+  border-radius: 1000px;
+  margin-left: 1rem;
+}
+.slogan li:first-child {
+  margin-left: 0
+}
+.slogan li.slogan-active {
+  background-color: var(--active-color);
+  color: #fff;
+}
+.pop {
+  width: 19.6rem;
+  border-radius: 6px;
+  background-color: var(--active-color);
+  color: #fff;
+  padding: .5rem 1rem;
+  position: relative;
+  font-size: 12px;
+  line-height: 2.5;
+}
+.pop::after {
+  content: '';
+  display: block;
+  border-left: 1rem solid var(--active-color);
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top: 1rem;
+  right: -1.8rem;
+}
+/* cartoon sir*/
+.icon-sir {
+  margin-left: 1.5rem;
+  display: inline-block;
+  width: 3.8rem;
+  height: 5.1rem;
+  background: url(../i/sir.png) no-repeat center center;
+  background-size: contain;
+}
