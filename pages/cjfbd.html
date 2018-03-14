@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>车检分布点查询</title>
+  <link rel="stylesheet" href="../assets/css/amazeui.min.css">
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/browser.js"></script>
+  <style>
+    html,
+    body {
+      background-color: #f2f2f2;
+      color: #666;
+      -webkit-font-smoothing: antialiased;
+    }
+    .tips-info {
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 15px;
+      font-size: 12px;
+      color: #b2b2b2;
+    }
+    .list-wr {
+      padding-left: 15px;
+      padding-right: 15px;
+      /* padding-top: 15px; */
+    }
+
+    .list-wr>li {
+      margin-bottom: 15px;
+      background-color: #fff;
+      border-radius: 6px;
+      padding: 10px 15px;
+      border-top: 6px solid #1287e2;
+      font-size: 14px;
+      list-style: none;
+    }
+
+    .list-wr>li>div {
+      margin-bottom: 10px;
+    }
+
+    .list-wr>li>div:last-child {
+      margin-bottom: 0;
+    }
+
+    .list-wr>li>div.cjd-tit {
+      margin-bottom: 15px;
+      font-size: 16px;
+      font-weight: bolder;
+    }
+  </style>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?095edfec21fc74ce77584243f9070933";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="tips-info">
+      温馨提示：本次更新时间2018年3月14日。前去车检的群众可电话确认该检车站是否正常运行，若关门可反馈至郑州警民通。
+  </div>
+  <ul class="list-wr">
+    <li>
+      <div class="cjd-tit">1. 郑州成功汽车检测有限公司</div>
+      <div class="cjd-addr">地址: 惠济区花园路与英才街交叉口向南贾鲁河南岸西600米</div>
+      <div class="cjd-tel">联系电话: 86503557</div>
+    </li>
+    <li>
+      <div class="cjd-tit">2. 郑州星达检测站</div>
+      <div class="cjd-addr">地址: 国基路丰庆路北</div>
+      <div class="cjd-tel">联系电话: 86536567</div>
+    </li>
+    <li>
+      <div class="cjd-tit">3. 河南昱辰交通安全有限公司</div>
+      <div class="cjd-addr">地址: 郑东新区白沙镇前程路南20米</div>
+      <div class="cjd-tel">联系电话: 62360121</div>
+    </li>
+    <li>
+      <div class="cjd-tit">4. 郑州速兴机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市惠济区三全路与索凌路西三百米路南</div>
+      <div class="cjd-tel">联系电话: 66962888</div>
+    </li>
+    <li>
+      <div class="cjd-tit">5. 郑州市大正机动车安全检测有限公司</div>
+      <div class="cjd-addr">地址: 惠济区天河路与绿源路交叉口向西100米路南</div>
+      <div class="cjd-tel">联系电话: 86541953</div>
+    </li>
+    <li>
+      <div class="cjd-tit">6. 郑州107机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市郑东新区京珠高速公路与商都路交叉口向东400米路北</div>
+      <div class="cjd-tel">联系电话: 61771809</div>
+    </li>
+    <li>
+      <div class="cjd-tit">7. 郑州旭日机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市中原区中原路与西三环交叉口向东100米路南</div>
+      <div class="cjd-tel">联系电话: 67670781</div>
+    </li>
+    <li>
+      <div class="cjd-tit">8. 郑州大承汽车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市高新区科学大道与雪松路交叉口向西100米路北</div>
+      <div class="cjd-tel">联系电话: 86538111</div>
+    </li>
+    <li>
+      <div class="cjd-tit">9. 郑州浩磊机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州二七区绕城高速樱桃沟出口郑州方向500米路西 </div>
+      <div class="cjd-tel">联系电话: 68901007</div>
+    </li>
+    <li>
+      <div class="cjd-tit">10. 郑州天荣机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市金水区中州大道与三全路交叉口北300米路西 </div>
+      <div class="cjd-tel">联系电话: 65989388</div>
+    </li>
+    <li>
+      <div class="cjd-tit">11. 郑州秦岭机动车检测服务有限公司</div>
+      <div class="cjd-addr">地址: 惠济区北三环和电厂路交叉口向南300米路东</div>
+      <div class="cjd-tel">联系电话: 86508999</div>
+    </li>
+    <li>
+      <div class="cjd-tit">12. 郑州市天行车辆检测技术有限公司</div>
+      <div class="cjd-addr">地址: 郑州市管城区南曹乡鸿泰路1号</div>
+      <div class="cjd-tel">联系电话: 86258588</div>
+    </li>
+    <li>
+      <div class="cjd-tit">13. 郑州永信机动车安全检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市管城回族区南曹乡苏庄村二十里铺村北郑新路（102省道）以西</div>
+      <div class="cjd-tel">联系电话: 69115789</div>
+    </li>
+    <li>
+      <div class="cjd-tit">14. 郑州顺腾机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州高新区化工路与云杉路交叉口向北200米路西</div>
+      <div class="cjd-tel">联系电话: 86580211</div>
+    </li>
+    <li>
+      <div class="cjd-tit">15. 郑州盛通机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市金水区农业路与朱屯路交叉口向北200米路东</div>
+      <div class="cjd-tel">联系电话: 55919767</div>
+    </li>
+    <li>
+      <div class="cjd-tit">16. 郑州圣迪机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市中原区须水街道三十里铺村红石坡1号</div>
+      <div class="cjd-tel">联系电话: 86632833</div>
+    </li>
+    <li>
+      <div class="cjd-tit">17. 郑州嘉伟机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州经济技术开发区南三环与25大街交叉口向东300米路北</div>
+      <div class="cjd-tel">联系电话: 55030777</div>
+    </li>
+    <li>
+      <div class="cjd-tit">18. 河南佳鑫机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市二七区马寨镇杨寨村西四环路与工业路交叉口向西800米路北</div>
+      <div class="cjd-tel">联系电话: 65620000</div>
+    </li>
+    <li>
+      <div class="cjd-tit">19. 中博机动车检测服务有限公司</div>
+      <div class="cjd-addr">地址: 郑州市惠济区文化路北段与北四环交叉口向北1000米路东</div>
+      <div class="cjd-tel">联系电话: 56070005</div>
+    </li>
+    <li>
+      <div class="cjd-tit">20. 郑州市易车机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市高新区瑞达路宏兴街交叉口东北角</div>
+      <div class="cjd-tel">联系电话: 13674933055 55981769</div>
+    </li>
+    <li>
+      <div class="cjd-tit">21. 郑州澎师机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市惠济区北四环路北，师南路东</div>
+      <div class="cjd-tel">联系电话: 63799123 18937159002 15378787187 13700858903</div>
+    </li>
+    <li>
+      <div class="cjd-tit">22. 郑州金星机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市新郑路与陇海里路交叉口向西300米</div>
+      <div class="cjd-tel">联系电话: 13939009075 13014616700</div>
+    </li>
+    <li>
+      <div class="cjd-tit">23. 郑州紫航机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 管城区紫荆山路与二里岗南街交叉口向西200米西北角</div>
+      <div class="cjd-tel">联系电话: 66511777</div>
+    </li>
+    <li>
+      <div class="cjd-tit">24. 郑州汇丰机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市中原区北岗村路北徐庄村南</div>
+      <div class="cjd-tel">联系电话: 15333835566 13663815551</div>
+    </li>
+    <li>
+      <div class="cjd-tit">25. 郑州成久机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市二七区侯寨乡嵩山路与南四环交叉口向西2公里</div>
+      <div class="cjd-tel">联系电话: 66688882</div>
+    </li>
+    <li>
+      <div class="cjd-tit">26. 郑州市华安机动车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑州市南三环与经开二十二大街交叉口东北角</div>
+      <div class="cjd-tel">联系电话: 13938565266</div>
+    </li>
+    <li>
+      <div class="cjd-tit">27. 郑州市汇众汽车检测有限公司</div>
+      <div class="cjd-addr">地址: 郑上路兰州北路交叉口</div>
+      <div class="cjd-tel">联系电话: 56715678</div>
+    </li>
+    <li>
+      <div class="cjd-tit">28. 河南世贸机动车综合性能检测服务有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 新郑市龙湖镇107国道西侧小刘桥北</div>
+      <div class="cjd-tel">联系电话: 88887381</div>
+    </li>
+    <li>
+      <div class="cjd-tit">29. 新密市豫能机动车辆检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 新密市未来大道与嵩山大道交叉口向南300米路西</div>
+      <div class="cjd-tel">联系电话: 63100116</div>
+    </li>
+    <li>
+      <div class="cjd-tit">30. 郑州鑫宇机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 新郑市郭店镇铜佛赵村</div>
+      <div class="cjd-tel">联系电话: 62516222</div>
+    </li>
+    <li>
+      <div class="cjd-tit">31. 郑州市华燕机动车检测服务有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 新郑市新村镇温州大道中段</div>
+      <div class="cjd-tel">联系电话: </div>
+    </li>
+    <li>
+      <div class="cjd-tit">32. 中牟雁鸣机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 郑州市中牟县建设路与万洪路交叉口向北第一个红绿灯右转德方街路西</div>
+      <div class="cjd-tel">联系电话: 60868817</div>
+    </li>
+    <li>
+      <div class="cjd-tit">33. 郑州中旺机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 中牟县建设路南段</div>
+      <div class="cjd-tel">联系电话: 62300666</div>
+    </li>
+    <li>
+      <div class="cjd-tit">34. 河南祥通汽车技术检测服务又限公司（郊县）</div>
+      <div class="cjd-addr">地址: 荥阳市桃贾路中段老商铺1区</div>
+      <div class="cjd-tel">联系电话: 85096376</div>
+    </li>
+    <li>
+      <div class="cjd-tit">35. 郑州市强力机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 荥阳市乔楼镇310国道与万山路交叉口汽车南站向西2.5公里路北</div>
+      <div class="cjd-tel">联系电话: 63250199</div>
+    </li>
+    <li>
+      <div class="cjd-tit">36. 郑州三公机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 荥阳市三公路与汜河路交叉口向北100米路西</div>
+      <div class="cjd-tel">联系电话: 64998998</div>
+    </li>
+    <li>
+      <div class="cjd-tit">37. 新郑腾飞机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 新郑市南环路郑禹公路东侧</div>
+      <div class="cjd-tel">联系电话: 85129222</div>
+    </li>
+    <li>
+      <div class="cjd-tit">38. 郑州鼎泰机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 中牟县郑开大道与223线（景观大道）雁鸣湖方向北2公里路西大孟镇土寨村</div>
+      <div class="cjd-tel">联系电话: 62312222</div>
+    </li>
+    <li>
+      <div class="cjd-tit">39. 登封市蓝盾机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 登封市大金店镇文村</div>
+      <div class="cjd-tel">联系电话: 62871777</div>
+    </li>
+    <li>
+      <div class="cjd-tit">40. 新密市祥峰机动车辆检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 郑登快速路与密杞路交叉口向西1公里路南</div>
+      <div class="cjd-tel">联系电话: 63137988</div>
+    </li>
+    <li>
+      <div class="cjd-tit">41. 登封天中机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 登封市卢店镇西岭</div>
+      <div class="cjd-tel">联系电话: 62985777</div>
+    </li>
+    <li>
+      <div class="cjd-tit">42. 郑州安达机动车辆检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 郑州市航空港综合实验区梁州大道与223省道交叉口向西1公里路北</div>
+      <div class="cjd-tel">联系电话: 62549999</div>
+    </li>
+    <li>
+      <div class="cjd-tit">43. 郑州市顺通机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 中牟县解放路立交桥南200米路东</div>
+      <div class="cjd-tel">联系电话: 62126777</div>
+    </li>
+    <li>
+      <div class="cjd-tit">44. 登封市路通机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 登封市告成镇嵩颖路与告成大街交叉口向南500米路东 </div>
+      <div class="cjd-tel">联系电话: 55555619</div>
+    </li>
+    <li>
+      <div class="cjd-tit">45. 郑州市豫鑫汽车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 登封市卢店镇刘家沟村</div>
+      <div class="cjd-tel">联系电话: 62970999</div>
+    </li>
+    <li>
+      <div class="cjd-tit">46. 郑州市上街区广志机动车检测有限公司（郊县）</div>
+      <div class="cjd-addr">地址: 郑州市上街区科学大道与汝南路交叉口西100米路北</div>
+      <div class="cjd-tel">联系电话: 85766811</div>
+    </li>
+  </ul>
+</body>
+
+</html>
